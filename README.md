@@ -13,9 +13,8 @@
 <b>Opdracht:</b>
 <br>"Redesign met je squad een squadpagina op basis van een bestaande API."
 <br>
-<br>In semester 2 zijn wij veel bezig geweest met het gebruiken van API's. Deze site is gebaseerd op de website van Videoland. Op de website kun je kijken welke serie-genre bij welke student past. Wie weet vind je hier wel je binge-buddy. De site bevat alle studenten van leerjaar 1 en zijn in de 3 squads gegroepeerd.
 <br>
-<br>🌐 [Bekijk de live site !](https://nice-jade-deer-cape.cyclic.app/)
+<br>🌐 [Bekijk de live site !]()
 
 <!-- In de Beschrijving staat hoe je project er uit ziet, hoe het werkt en wat je er mee kan. -->
 <!-- Voeg een mooie poster visual toe 📸 -->
@@ -47,7 +46,7 @@
 6. Het live zetten van je project kan met behulp van cyclic.
 
 ## ✂️ Gebruik
-Je kunt filteren op de 3 squads. Per serie-genre kun je ook filteren op voornaam. Als je op de afbeelding klikt van een student, ga je naar zijn/haar website link. Je kunt per serie-genre van links naar rechts scrollen om alle studenten te bekijken.
+Je kunt filteren op de 3 squads.
 
 ## 📥 Bronnen
 Dit zijn de bronnen die ik voor dit project heb gebruikt:
@@ -58,7 +57,6 @@ Dit zijn de bronnen die ik voor dit project heb gebruikt:
 * [Cyclic](cyclic.sh) (Live link)
 * [Node js](https://nodejs.org/en/download/) (Voor het installeren van Node js)
 * [Github forks](https://github.com/fdnd-task/connect-your-tribe-squad-page/network/members) (Inspiratie)
-* [Videoland](https://v2.videoland.com/) (Inspiratie)
 
 ## 💯 Licentie
 
