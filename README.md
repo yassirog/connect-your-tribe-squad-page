@@ -1,5 +1,4 @@
 # 🔥 Squadpage
-<img width="1387" alt="Scherm­afbeelding 2023-02-17 om 18 37 38" src="https://user-images.githubusercontent.com/112861144/219728937-a6e3b36a-d57c-41a2-b7f5-56793d38c94f.png">
 
 
 ## 🚀 Inhoudsopgave
