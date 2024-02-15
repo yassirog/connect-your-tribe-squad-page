@@ -1,5 +1,16 @@
 <%- include('./partials/head') %>
 
+<nav class="navbar">
+
+  <h2>Squad</h2>
+
+<ul class="squad-row">
+  <% squads.slice(2).forEach(squad => { %>
+    <li><a class="squads" href="/squad/<%= squad.id %>">Squad <%= squad.name %></a></li>
+  <% }) %>
+</ul>
+</nav>
+
 <a class="back" href="/">Back</a>
 
 <main>
@@ -8,6 +19,9 @@
         <ul class="card-list">
             <% persons.forEach(person => { %>
             <li class="card-item">
+              
+              <div style="background: url(<%= person.avatar %>)" class="banner">
+              </div>
               <div class="img-box">
                   <img src="<%= person.avatar.includes('https') ? person.avatar : '/assets/person.png' %>" height="200px">
               </div>
@@ -16,7 +30,6 @@
                 <p>Nickname: <%= person.nickname != "" ? person.nickname : 'Ik heb geen...' %></p>
                 <div class="button-row">
                     <a class="button" href="<%= person.github_handle %>"><i class="fa-brands fa-github"></i> Github</a>
-                    <button class="button"><i class="fa-solid fa-repeat"></i> Flip</button>
                 </div>
             </li>
             <% }) %>

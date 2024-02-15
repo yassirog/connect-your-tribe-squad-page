@@ -1,7 +1,7 @@
 <section>
   <h2>Squads</h2>
   <ul>
-    <% squads.forEach(squad => { %>
+    <% squads.slice(2).forEach(squad => { %>
       <li><a href="/squad/<%= squad.id %>">Squad <%= squad.name %>, id <%= squad.id %>, tribe_id <%= squad.tribe_id %></a></li>
     <% }) %>
   </ul>

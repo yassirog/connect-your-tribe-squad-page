@@ -3,26 +3,75 @@
     font-family: "Inter", sans-serif;
 }
 
+.navbar {
+    display: flex;
+
+    & .squads {
+        float: right;
+    }
+}
+
+.banner {
+    height: 50%;
+    width: 100%;
+}
+
+.banner img {
+    width: auto;
+    height: 20em;
+    filter: blur(8px); /* Adjust the blur intensity as per your requirement */
+}
+
+nav ul li {
+    float: right;
+}
+
+.squads {
+    float: right;
+}
+
+body {
+    height: 100%;
+    background: rgb(248, 248, 248);
+}
+
 .squadname {
     text-align: center;
 }
 
+
+.squad-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5em;
+}
+
+.squads {
+    background-color: lightgrey;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-decoration: none;
+    color: black;
+}
 
 /* Card-list -- Grid */
 .card-list {
     display: grid;
     padding-left: 1em;
     padding-right: 1em;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
 
     & .card-item {
+    text-align: center;
     background-color: white;
-    border: 1px solid black;
+    background: linear-gradient(0deg, #ffffff 55%, rgba(0, 26, 255, 0.235) 45%);
     border-radius: 5px;
-    padding: 1em;
     opacity: 100%;
-    box-shadow: 5px 2px 2px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 4px 2px 3px rgba(0, 0, 0, 0.2);
     }
     
     & .button-row {
@@ -31,12 +80,13 @@
     }
 
     & .img-box {
-        display: flex;
+        position:relative;
+        bottom: 40%;
         justify-content: center;
     }
 
     & img {
-        border-radius: 20px;
+        border-radius: 5px;
     }
 }
 
@@ -46,21 +96,34 @@ li {
 
 .button {
     padding: 10px;
-    color: black;
-    background-color: lightgrey;
+    width: 100%;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
     border: 1px solid black;
-    border-radius: 10px;
+    background-color: rgba(0, 26, 255, 0.235);
     text-decoration: none;
     cursor: pointer;
 }
 
-img {
-    border: 2px solid black;
-    box-shadow: 3px 2px 2px 3px rgba(0, 0, 0, 0.2);
+.button:hover {
+    background-color: rgb(236, 236, 236);
 }
 
 h1 {
     font-size: 30px;
+}
+
+/* h2 {
+    color: white;
+}
+
+p {
+    color: white;
+} */
+
+hr {
+    margin: 2em;
 }
 
 
