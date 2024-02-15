@@ -49,6 +49,17 @@ app.get('/person/:id', function (request, response) {
   })
 })
 
+// Maak een GET route voor een detailpagina met een request parameter id
+app.get('/squad/:id', function (request, response) {
+  // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
+  fetchJson(apiUrl + '/squad/' + request.params.id).then((apiData) => {
+    fetchJson(apiUrl + '/person?filter[squad_id]=' + request.params.id).then((personData) => {
+      // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
+      response.render('squad', {squad: apiData.data, persons: personData.data, squads: squadData.data})
+    })
+  })
+})
+
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)
 

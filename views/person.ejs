@@ -4,6 +4,17 @@
 
 <h2><%= person.name %></h2>
 
-<p>Squad: <%= person.squad_id %>
+<p>Name: <%= person.name + " " + person.prefix + " " + person.surname %></p>
+<p>Nickname: <%= person.nickname %></p>
+<p>Role: <%= person.role %></p>
+<p>Github: <%= person.github_handle %></p>
+
+<% squads.forEach(squad => { %>
+<% if (squad.id == person.squad_id) { %>
+<p>Squad: <%= squad.name %></p>
+<% } }) %>
+
+<p>Website: <%= person.website %></p>
+<p>Bio: <%= person.bio %></p>
 
 <%- include('./partials/foot') %>

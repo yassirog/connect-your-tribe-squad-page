@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    font-family: "Inter", sans-serif;
+}
+
+.squadname {
+    text-align: center;
+}
+
+
+/* Card-list -- Grid */
+.card-list {
+    display: grid;
+    padding-left: 1em;
+    padding-right: 1em;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+
+    & .card-item {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1em;
+    opacity: 100%;
+    box-shadow: 5px 2px 2px 3px rgba(0, 0, 0, 0.2);
+    }
+    
+    & .button-row {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    & .img-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    & img {
+        border-radius: 20px;
+    }
+}
+
+li {
+    list-style-type: none;
+}
+
+.button {
+    padding: 10px;
+    color: black;
+    background-color: lightgrey;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+img {
+    border: 2px solid black;
+    box-shadow: 3px 2px 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 30px;
+}
+
+
+@media only screen and (max-width: 600px){
+	.card-list {
+        grid-template-columns: repeat(1, 1fr);
+
+    }
+}
