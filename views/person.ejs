@@ -1,20 +1,30 @@
 <%- include('./partials/head') %>
 
-<a href="/">Back</a>
+<div class="navbar">
+  <a href="/">
+  <h1>FDND SQUADS</h1>
+  </a>
+  <div class="link">
+    <a class="returnbutton" href="/squad/5">Terug naar de Squad page</a>
+  </ul>
+  </div>
+</div>
+<div class="main"></div>
 
-<h2><%= person.name %></h2>
 
-<p>Name: <%= person.name + " " + person.prefix + " " + person.surname %></p>
-<p>Nickname: <%= person.nickname %></p>
-<p>Role: <%= person.role %></p>
-<p>Github: <%= person.github_handle %></p>
-
-<% squads.forEach(squad => { %>
-<% if (squad.id == person.squad_id) { %>
-<p>Squad: <%= squad.name %></p>
-<% } }) %>
-
-<p>Website: <%= person.website %></p>
-<p>Bio: <%= person.bio %></p>
-
-<%- include('./partials/foot') %>
+<div>
+  <div class="card-list-person">
+<li class="card-item">
+  <div class="img-box">
+    <img src="<%= person || person.avatar.includes('https') ? person.avatar : '/assets/person.png' %>" height="200px">
+  </div>
+    <h2><%= person.name + " " + person.prefix + " " + person.surname %></h2>
+    <p>Nickname: <%= person.nickname != "" ? person.nickname : 'Ik heb geen...' %></p>
+    <div class="button-row">
+    <a class="button" href="<%= person || person.github_handle.includes('https') ? person.github_handle : 'https://github.com/' + person.github_handle %>">
+      <i class="fa-brands fa-github"></i> Github</a>
+    </div>
+</li>
+</a>
+</div>
+</div>

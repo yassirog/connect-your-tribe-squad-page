@@ -2,27 +2,21 @@
 
 
 <div class="main"></div>
-<!-- <ul>
-  <li><h2>FDND Squads</h2></li>
-  <% squads.slice(2).forEach(squad => { %>
-    <li ><a href="/squad/<%= squad.id %>">Squad <%= squad.name %></a></li>
-  <% }) %>
-</ul> -->
-
 <div class="navbar">
-  <h1>FDND Squads</h1>
+  <a href="/">
+    <h1 class="title">FDND SQUADS</h1>
+    </a>
+  </div>
   <div class="link">
     <% squads.slice(2).forEach(squad => { %>
       <li ><a href="/squad/<%= squad.id %>">Squad <%= squad.name %></a></li>
     <% }) %>
   </ul>
-  </div>
+</div>
 </div>
 
-<!-- <a class="back" href="/">Back</a> -->
 
     <section>
-        <h1 class="squadname">Squad <%= squad.name %></h1>
         <ul class="card-list">
             <% persons.forEach(person => { %>
               <div>
@@ -35,11 +29,12 @@
                 <h2><%= person.name + " " + person.prefix + " " + person.surname %></h2>
                 <p>Nickname: <%= person.nickname != "" ? person.nickname : 'Ik heb geen...' %></p>
                 <div class="button-row">
-                    <a class="button" href="<%= person.github_handle %>"><i class="fa-brands fa-github"></i> Github</a>
+                    <a class="button" href="<%= person.github_handle.includes('github') ? person.github_handle : 'https://github.com/' + person.github_handle %>"><i class="fa-brands fa-github"></i> Github</a>
                 </div>
             </li>
           </a>
           </div>
             <% }) %>
         </ul>
+        <h1 class="squadname">Squad <%= squad.name %></h1>
     </section>

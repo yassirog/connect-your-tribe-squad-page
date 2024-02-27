@@ -1,12 +1,26 @@
 <%- include('./partials/head') %>
 
-<h2>Students</h2>
-<ul>
+
+<section>
+<ul class="card-list">
   <% persons.forEach(person => { %>
-    <li><a href="./person/<%= person.id %>"><%= person.name %></a>, squad_id <%= person.squad_id %></li>
+    <div>
+      <a href="/person/<%=person.id %>">
+  <li class="card-item">
+    <div class="img-box">
+      <%= console.log(person) %>
+      <img src="<%= person || person.avatar.includes('https') ? person.avatar : '/assets/person.png' %>" height="200px">
+    </div>
+    <hr>
+      <h2><%= person.name + " " + person.prefix + " " + person.surname %></h2>
+      <p>Nickname: <%= person.nickname != "" ? person.nickname : 'Ik heb geen...' %></p>
+      <div class="button-row">
+      <a class="button" href="<%= person || person.github_handle.includes('https') ? person.github_handle : 'https://github.com/' + person.github_handle %>">
+        <i class="fa-brands fa-github"></i> Github</a>
+      </div>
+  </li>
+</a>
+</div>
   <% }) %>
 </ul>
-
-<a href="./squad/1">Naam</a>
-
-<%- include('./partials/foot') %>
+</section>
