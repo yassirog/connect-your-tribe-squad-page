@@ -40,7 +40,7 @@ app.post('/', function (request, response) {
   response.redirect(303, '/')
 })
 
-// Maak een GET route voor een detailpagina met een request parameter id
+// Maak een GET route voor een detailpagina (PERSON) met een request parameter id
 app.get('/person/:id', function (request, response) {
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
   fetchJson(apiUrl + '/person/' + request.params.id).then((apiData) => {
@@ -49,7 +49,7 @@ app.get('/person/:id', function (request, response) {
   })
 })
 
-// Maak een GET route voor een detailpagina met een request parameter id
+// Maak een GET route voor een detailpagina (SQUAD) met een request parameter id
 app.get('/squad/:id', function (request, response) {
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
   fetchJson(apiUrl + '/squad/' + request.params.id).then((apiData) => {

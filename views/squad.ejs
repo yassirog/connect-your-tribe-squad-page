@@ -1,24 +1,35 @@
 <%- include('./partials/head') %>
 
 
-<ul>
+<div class="main"></div>
+<!-- <ul>
   <li><h2>FDND Squads</h2></li>
   <% squads.slice(2).forEach(squad => { %>
     <li ><a href="/squad/<%= squad.id %>">Squad <%= squad.name %></a></li>
   <% }) %>
-</ul>
+</ul> -->
 
+<div class="navbar">
+  <h1>FDND Squads</h1>
+  <div class="link">
+    <% squads.slice(2).forEach(squad => { %>
+      <li ><a href="/squad/<%= squad.id %>">Squad <%= squad.name %></a></li>
+    <% }) %>
+  </ul>
+  </div>
+</div>
 
-<a class="back" href="/">Back</a>
+<!-- <a class="back" href="/">Back</a> -->
 
-<main>
     <section>
         <h1 class="squadname">Squad <%= squad.name %></h1>
         <ul class="card-list">
             <% persons.forEach(person => { %>
+              <div>
+                <a href="/person/<%=person.id %>">
             <li class="card-item">
               <div class="img-box">
-                  <img src="<%= person.avatar.includes('https') ? person.avatar : '/assets/person.png' %>" height="200px">
+                <img src="<%= person.avatar.includes('https') ? person.avatar : '/assets/person.png' %>" height="200px">
               </div>
               <hr>
                 <h2><%= person.name + " " + person.prefix + " " + person.surname %></h2>
@@ -27,10 +38,8 @@
                     <a class="button" href="<%= person.github_handle %>"><i class="fa-brands fa-github"></i> Github</a>
                 </div>
             </li>
+          </a>
+          </div>
             <% }) %>
         </ul>
     </section>
-</main>
-
-
-<%- include('./partials/foot') %>
