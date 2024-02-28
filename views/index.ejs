@@ -6,7 +6,7 @@
    <h1 class="title">FDND SQUADS</h1>
   <ul class="link">
     <% squads.slice(2).forEach(squad => { %>
-      <li ><a href="/squad/<%= squad.id %>">Squad <%= squad.name %></a></li>
+      <li ><a href="/?squadId=<%= squad.id %>"> Squad <%= squad.name %></a></li>
     <% }) %>
   </ul>
 </nav>
