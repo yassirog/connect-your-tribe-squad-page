@@ -67,7 +67,7 @@ a{
 
 .squadname {
     text-align: center;
-    margin-top: 2em;
+    margin-top: 1em;
 }
 
 /* Card-list -- Grid */
@@ -165,30 +165,6 @@ hr {
     margin: 2em;
 }
 
-@media screen and (min-width: 300px) and (max-width: 900px) {
-     .card-item {
-        width: 20em;
-    }
-
-    .link {
-        justify-content: center;
-        display: flex;
-        margin-top: 3em;
-        margin-bottom: 0;
-    }
-
-    .link li {
-        margin-top: 1em;
-        margin: 0;
-    }
-
-    .link a {
-        font-size: 15px;
-        margin: 0;
-    }
-}
-
-
 /* ACHTEGRROND */
 body{
     background-color: #000;
@@ -276,3 +252,26 @@ body{
     }
 }
 
+
+@media screen and (min-width: 300px) and (max-width: 900px) {
+    .card-item {
+       width: 20em;
+   }
+
+   .link {
+       justify-content: center;
+       display: flex;
+       margin-top: 3em;
+       margin-bottom: 0;
+   }
+
+   .link li {
+       margin-top: 1em;
+       margin: 0;
+   }
+
+   .link a {
+       font-size: 15px;
+       margin: 0;
+   }
+}
