@@ -11,6 +11,11 @@
     /*fonts*/
     --general-font: 'Dosis', 'Helvetica', Sans-Serif;
     --card-font: "Inter", sans-serif;
+
+    --glow-color: rgb(255, 255, 255);
+    --glow-spread-color: rgba(242, 242, 242, 0.13);
+    --enhanced-glow-color: rgb(242, 242, 242);
+    --btn-color: #222;
 }
 
 body {
@@ -50,11 +55,6 @@ a{
 }
 
 .link a {
-    --glow-color: rgb(255, 255, 255);
-    --glow-spread-color: rgba(7, 21, 173, 0.781);
-    --enhanced-glow-color: rgb(11, 25, 180);
-    --btn-color: rgb(3, 3, 122);
-    border: .05em solid var(--glow-color);
     padding: 0.5em 1.5em;
     color: var(--glow-color);
     font-weight: bold;
@@ -62,7 +62,7 @@ a{
     border-radius: 0.4em;
     outline: none;
     position: relative;
-    transition: all 0.3s;
+    transition: all 0.6s;
     font-size: 20px;
 }
 
@@ -74,8 +74,6 @@ a{
     0 0 4em 2em var(--glow-spread-color),
     inset 0 0 .75em .25em var(--glow-color);
 }
-
-
 
 .squadname {
     text-align: center;
@@ -115,13 +113,12 @@ a{
 }
 
 .card-item {
-    width: 30em;
+    width: 20em;
     text-align: center;
     background: rgba(142, 142, 142, 0.1);
     backdrop-filter: blur( 2px );
     -webkit-backdrop-filter: blur( 2px );
     border-radius: 5px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
     box-shadow: none;
     transition: all 0.3s ease-out;
     margin-bottom: 1em;
@@ -129,7 +126,7 @@ a{
 }
 
 .card-item:hover {
-    box-shadow: rgba(31, 38, 135, 1) 0px 10px 36px 0px, rgba(31, 38, 135, 1) 0px 0px 0px 1px;
+    box-shadow: rgba(242, 242, 242, 0.13) 0px 10px 36px 0px, rgba(242, 242, 242, .13) 0px 0px 0px 1px;
     transition: all 0.3s ease-in-out;
     transform: scale(1.1);
     text-shadow: #000;
@@ -144,33 +141,33 @@ li {
     margin: 1em;
     width: 100%;
     text-align: center;
-    color: white;
+    color: #f2f2f2;
     border-radius: 5px;
-    border: 1px solid white;
-    background-color: rgba(0, 26, 255, 0.235);
+    background-color: #222;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.5s ease-in-out;
 }
 
 .button:hover {
-    background-color: rgb(0, 14, 142);
-    box-shadow: 0 0 .5em .15em rgb(0, 14, 142),
-    0 0 2em 1em rgb(0, 14, 142),
-    inset 0 0 .35em .15em rgb(0, 14, 142);
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 1em .25em var(--glow-color),
+    0 0 4em 2em var(--glow-spread-color),
+    inset 0 0 .75em .25em var(--glow-color);
 }
 
 h1 {
     font-size: 30px;
-    color: white;
+    color: #f2f2f2;
 }
 
 h2 {
-    color: white;
+    color: #f2f2f2;
 }
 
 p {
-    color: white;
+    color: #f2f2f2;
 }
 
 hr {
