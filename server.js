@@ -23,16 +23,32 @@ app.set('views', './views')
 app.use(express.static('public'))
 
 // Maak een GET route voor de index
-app.get('/', function (request, response) {
-  // Haal alle personen uit de WHOIS API op
-  fetchJson(apiUrl + '/person').then((apiData) => {
-    // apiData bevat gegevens van alle personen uit alle squads
-    // Je zou dat hier kunnen filteren, sorteren, of zelfs aanpassen, voordat je het doorgeeft aan de view
+app.get('/', function (request, response) { // Zorg ervoor dat je de informatie terug krijgt
+    
+  // Haal de squad ID op uit de query parameters of stel deze standaard in op 5 / Squad F
+  let squadId = request.query.squadId || 5;
+  
+  // Haal gegevens op van WHOIS op basis van de squad ID
+  let apiUrl = `https://fdnd.directus.app/items/person?filter={"squad_id":${squadId}}`;
 
-    // Render index.ejs uit de views map en geef de opgehaalde data mee als variabele, genaamd persons
-    response.render('index', {persons: apiData.data, squads: squadData.data})
+  //Dit is een methode die wordt gebruikt om gegevens op te halen. 
+  //Het haalt de gegevens op van de opgegeven URL.
+
+  fetchJson(apiUrl)
+  .then((apiData) => {
+
+    // Dit wordt uitgevoerd wanneer de gegevens succesvol zijn opgehaald van WHOIS. 
+    //Het rendert vervolgens 'index.ejs' pagina en geeft de opgehaalde gegevens door.
+    response.render('index', { persons: apiData.data, squads: squadData.data });
   })
-})
+
+    //Dit wordt uitgevoerd als er een fout optreedt bij het ophalen van de gegevens.
+  .catch((error) => {
+    console.error('Error fetching data:', error);
+    response.status(500).send('Error fetching data');
+  });
+});
+
 
 // Maak een POST route voor de index
 app.post('/', function (request, response) {
@@ -46,17 +62,6 @@ app.get('/person/:id', function (request, response) {
   fetchJson(apiUrl + '/person/' + request.params.id).then((apiData) => {
     // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
     response.render('person', {person: apiData.data, squads: squadData.data})
-  })
-})
-
-// Maak een GET route voor een detailpagina (SQUAD) met een request parameter id
-app.get('/squad/:id', function (request, response) {
-  // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
-  fetchJson(apiUrl + '/squad/' + request.params.id).then((apiData) => {
-    fetchJson(apiUrl + '/person?filter[squad_id]=' + request.params.id).then((personData) => {
-      // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-      response.render('squad', {squad: apiData.data, persons: personData.data, squads: squadData.data})
-    })
   })
 })
 

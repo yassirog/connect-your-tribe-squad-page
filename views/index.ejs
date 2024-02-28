@@ -1,26 +1,43 @@
 <%- include('./partials/head') %>
 
+<div class="main"></div>
+ <!-- navbar -->
+ <nav class="navbar">
+   <h1 class="title">FDND SQUADS</h1>
+  <ul class="link">
+    <% squads.slice(2).forEach(squad => { %>
+      <li ><a href="/squad/<%= squad.id %>">Squad <%= squad.name %></a></li>
+    <% }) %>
+  </ul>
+</nav>
 
-<section>
+
 <ul class="card-list">
   <% persons.forEach(person => { %>
     <div>
+      
+      <!--Maak de kaart een link-->
       <a href="/person/<%=person.id %>">
-  <li class="card-item">
-    <div class="img-box">
-      <%= console.log(person) %>
-      <img src="<%= person || person.avatar.includes('https') ? person.avatar : '/assets/person.png' %>" height="200px">
+        <li class="card-item">
+          <div class="img-box">
+             
+            <!-- Laat person avatar zien en als de member geen avatar heeft laat de asset zien -->
+            <img src="<%= person.avatar.includes('https') ? person.avatar : '/assets/person.png' %>" height="200px">
+          </div>
+          <hr>
+          
+          <!--Laat de member naam en achternaam zien-->
+          <h2><%= person.name + " " + person.prefix + " " + person.surname %></h2>
+            
+          <!--Laat de member nickname zien als er geen nickname is komt de tekst-->
+          <p>Nickname: <%= person.nickname != "" ? person.nickname : 'Ik heb geen...' %></p>
+              
+          <!--Laat een button naar github zien-->
+              <div class="button-row">
+                  <a class="button" href="<%= person.github_handle.includes('github') ? person.github_handle : 'https://github.com/' + person.github_handle %>"><i class="fa-brands fa-github"></i> Github</a>
+              </div>
+        </li>
+      </a>
     </div>
-    <hr>
-      <h2><%= person.name + " " + person.prefix + " " + person.surname %></h2>
-      <p>Nickname: <%= person.nickname != "" ? person.nickname : 'Ik heb geen...' %></p>
-      <div class="button-row">
-      <a class="button" href="<%= person || person.github_handle.includes('https') ? person.github_handle : 'https://github.com/' + person.github_handle %>">
-        <i class="fa-brands fa-github"></i> Github</a>
-      </div>
-  </li>
-</a>
-</div>
-  <% }) %>
+        <% }) %>
 </ul>
-</section>
