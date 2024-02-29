@@ -3,7 +3,7 @@
 <div class="main"></div>
  <!-- navbar -->
  <nav class="navbar">
-   <h1 class="title">FDND SQUADS</h1>
+  <h1 class="title">FDND SQUADS</h1>
   <ul class="link">
     <% squads.slice(2).forEach(squad => { %>
       <li ><a href="/?squadId=<%= squad.id %>"> Squad <%= squad.name %></a></li>
@@ -12,32 +12,53 @@
 </nav>
 
 
-<ul class="card-list">
-  <% persons.forEach(person => { %>
-    <div>
-      
-      <!--Maak de kaart een link-->
-      <a href="/person/<%=person.id %>">
-        <li class="card-item">
-          <div class="img-box">
-             
-            <!-- Laat person avatar zien en als de member geen avatar heeft laat de asset zien -->
-            <img src="<%= person.avatar.includes('https') ? person.avatar : '/assets/person.png' %>" height="200px">
-          </div>
-          <hr>
-          
-          <!--Laat de member naam en achternaam zien-->
-          <h2><%= person.name + " " + person.prefix + " " + person.surname %></h2>
-            
-          <!--Laat de member nickname zien als er geen nickname is komt de tekst-->
-          <p>Nickname: <%= person.nickname != "" ? person.nickname : 'Ik heb geen...' %></p>
+<div class="containerPersons">
+
+  <div class="controls">
+    <!-- Button voor de slider naar links -->
+    <button class="prevBtn">
+      <!-- svg gebruikt, hierdoor kan de color aangepast worden -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+      </svg>
+    </button>
+
+    <!-- Button voor de slider naar rechts -->
+    <button class="nextBtn">
+      <!-- svg gebruikt, hierdoor kan de color aangepast worden -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+      </svg>
+    </button>
+  </div>
+
+  <ul class="card-list slider">
+    <% persons.forEach(person => { %>
+      <div>
+        <!-- Maak de kaart een link-->
+        <a href="/person/<%=person.id %>">
+          <li class="card-item">
+            <div class="img-box">
               
-          <!--Laat een button naar github zien-->
-              <div class="button-row">
-                  <a class="button" href="<%= person.github_handle.includes('github') ? person.github_handle : 'https://github.com/' + person.github_handle %>"><i class="fa-brands fa-github"></i> Github</a>
-              </div>
-        </li>
-      </a>
-    </div>
-        <% }) %>
-</ul>
+              <!-- Laat person avatar zien en als de member geen avatar heeft laat de asset zien -->
+              <img src="<%= person.avatar.includes('https') ? person.avatar : '/assets/person.png' %>" height="200px">
+            </div>
+            <hr>
+            
+            <!--Laat de member naam en achternaam zien-->
+            <h2><%= person.name + " " + person.prefix + " " + person.surname %></h2>
+              
+            <!--Laat de member nickname zien als er geen nickname is komt de tekst-->
+            <p>Nickname: <%= person.nickname != "" ? person.nickname : 'Ik heb geen...' %></p>
+                
+            <!--Laat een button naar github zien-->
+            <div class="button-row">
+                <a class="button" href="<%= person.github_handle.includes('github') ? person.github_handle : 'https://github.com/' + person.github_handle %>"><i class="fa-brands fa-github"></i> Github</a>
+            </div>
+          </li>
+        </a>
+      </div>
+    <% }) %>
+  </ul>
+
+</div>

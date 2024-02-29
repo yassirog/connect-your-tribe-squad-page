@@ -66,7 +66,8 @@ a{
     font-size: 20px;
 }
 
-.link a:hover {
+.link a:hover,
+.controls button:hover {
     background-color: rgb(0, 14, 142);
     color: var(--btn-color);
     background-color: var(--glow-color);
@@ -79,6 +80,43 @@ a{
     text-align: center;
     margin-top: 1em;
 }
+
+
+/* CONTAINER + CONTROLS CARD LIST */
+.containerPersons {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.controls {
+    position: absolute;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 9999;
+}
+.controls button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 3.5rem;
+    height: 3.5rem;
+    color: var(--glow-color);;
+    border-radius: 50%;
+    background-color: var(--btn-color);
+    transition: all 0.6s;
+    cursor: pointer;
+    z-index: 1;
+}
+.controls button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* END CONTAINER + CONTROLS CARD LIST */
 
 /* Card-list -- Grid */
 .card-list {
@@ -121,7 +159,7 @@ a{
     border-radius: 5px;
     box-shadow: none;
     transition: all 0.3s ease-out;
-    margin-bottom: 1em;
+    /* margin-bottom: 1em; */ /* even uitgezet */
     font-family: var(--card-font);
 }
 
@@ -277,5 +315,13 @@ hr {
    .link a {
        font-size: 15px;
        margin: 0;
+   }
+   .controls button {
+       width: 3rem;
+       height: 3rem;
+   }
+   .controls button svg {
+    width: 1.25rem;
+    height: 1.25rem;
    }
 }
