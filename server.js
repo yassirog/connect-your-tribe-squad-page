@@ -22,6 +22,9 @@ app.set('views', './views')
 // Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
 app.use(express.static('public'))
 
+// Zorg dat werken met request data makkelijker wordt
+app.use(express.urlencoded({extended: true}))
+
 // Maak een GET route voor de index
 app.get('/', function (request, response) { // Zorg ervoor dat je de informatie terug krijgt
     
@@ -56,14 +59,63 @@ app.post('/', function (request, response) {
   response.redirect(303, '/')
 })
 
+// Zet een array klaar, waarin we alle globale berichten voor ons message board op gaan slaan
+const messages = []
+
 // Maak een GET route voor een detailpagina (PERSON) met een request parameter id
 app.get('/person/:id', function (request, response) {
   // Gebruik de request parameter id en haal de juiste persoon uit de WHOIS API op
   fetchJson(apiUrl + '/person/' + request.params.id).then((apiData) => {
     // Render person.ejs uit de views map en geef de opgehaalde data mee als variable, genaamd person
-    response.render('person', {person: apiData.data, squads: squadData.data})
+    response.render('person', {person: apiData.data, squads: squadData.data, messages: messages[request.params.id] || [] })
   })
 })
+
+// Als we vanuit de browser een POST doen op de detailpagina van een persoon
+app.post('/person/:id', async function(request, response) {
+  try {
+    // Haal eerst de huidige gegevens voor deze persoon op, uit de WHOIS API
+    const apiResponse = await fetchJson('https://fdnd.directus.app/items/person/' + request.params.id);
+
+    // Het custom field is een String, dus die moeten we eerst
+    // omzetten (= parsen) naar een Object, zodat we er mee kunnen werken
+    apiResponse.data.custom = apiResponse.data.custom ? JSON.parse(apiResponse.data.custom) : {};
+
+    // Controleer eerst welke actie is uitgevoerd, aan de hand van de submit button
+    if (request.body.actie === 'verstuur') {
+      // Als het custom object nog geen messages Array als eigenschap heeft, voeg deze dan toe
+      if (!apiResponse.data.custom.messages) {
+        apiResponse.data.custom.messages = [];
+      }
+
+      // Voeg een nieuwe message toe voor deze persoon, aan de hand van het bericht uit het formulier
+      apiResponse.data.custom.messages.push(request.body.message);
+
+      // Update the messages array for this person
+      messages[request.params.id] = apiResponse.data.custom.messages;
+    } else {
+      apiResponse.data.custom[request.body.actie] = true;
+    }
+
+    // Voeg de nieuwe lijst messages toe in de WHOIS API,
+    // via een PATCH request
+    const patchResponse = await fetch('https://fdnd.directus.app/items/person/' + request.params.id, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        custom: apiResponse.data.custom
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+      }
+    });
+
+    // Redirect naar de persoon pagina
+    response.redirect(303, '/person/' + request.params.id);
+  } catch (error) {
+    console.error('Error handling POST request:', error);
+    response.status(500).send('Error handling POST request');
+  }
+});
 
 // Stel het poortnummer in waar express op moet gaan luisteren
 app.set('port', process.env.PORT || 8000)

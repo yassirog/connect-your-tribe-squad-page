@@ -16,6 +16,10 @@
     --glow-spread-color: rgba(242, 242, 242, 0.13);
     --enhanced-glow-color: rgb(242, 242, 242);
     --btn-color: #222;
+
+    /*padding*/
+
+    --padding-1em: 1em;
 }
 
 body {
@@ -42,7 +46,7 @@ body {
 
 a{
     text-decoration: none;
-    color: white;
+    color: var(--white);
     margin: 10px;
 }
 
@@ -54,7 +58,7 @@ a{
     margin-top: 2em;
 }
 
-.link a {
+.link a, .formbutton {
     padding: 0.5em 1.5em;
     color: var(--glow-color);
     font-weight: bold;
@@ -67,7 +71,7 @@ a{
 }
 
 .link a:hover,
-.controls button:hover {
+.controls button:hover, .formbutton:hover {
     background-color: rgb(0, 14, 142);
     color: var(--btn-color);
     background-color: var(--glow-color);
@@ -293,6 +297,48 @@ hr {
         scroll-snap-align: center;
     }
 }
+
+.comments{
+    padding: 2em;
+    font-family: var(--card-font);
+    text-align: center;
+    padding: 1em;
+
+    & ol{
+        display: flex;
+        gap: 2em;
+        margin: 1em;
+    }
+    & li {
+        padding: 10px;
+        width: 20vw;
+        text-align: center;
+        border-radius: 5px;
+        background-color: var(--white);
+        text-decoration: none;
+
+        & p {
+            color: var(--black);
+        }
+    } 
+}
+
+form {
+    margin: 1em;
+
+    & textarea{
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: var(--black);
+        color: var(--white);
+    }
+
+}
+
+
 
 
 @media screen and (min-width: 300px) and (max-width: 900px) {
