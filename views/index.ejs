@@ -3,7 +3,9 @@
 <div class="main"></div>
  <!-- navbar -->
  <nav class="navbar">
-  <h1 class="title">FDND SQUADS</h1>
+  <a href="/">
+    <h1 class="title">FDND SQUADS</h1>
+  </a>
   <ul class="link">
     <% squads.slice(2).forEach(squad => { %>
       <li ><a href="/?squadId=<%= squad.id %>"> Squad <%= squad.name %></a></li>
