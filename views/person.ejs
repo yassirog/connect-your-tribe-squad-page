@@ -2,10 +2,10 @@
 
 <div class="navbar">
   <a href="/">
-  <h1>FDND SQUADS</h1>
+  <h1 class="title">FDND SQUADS</h1>
   </a>
   <div class="link">
-    <a class="returnbutton" href="/">Terug naar de Squad page</a>
+    <a href="/">Terug naar de Squad page</a>
   </ul>
   </div>
 </div>
@@ -16,15 +16,15 @@
   <div class="card-list-person">
 <li class="card-item">
   <div class="img-box">
-    <img src="<%= person || person.avatar.includes('https') ? person.avatar : '/assets/person.png' %>" height="200px">
+    <img src="<%= person.avatar.includes('https') ? person.avatar : '/assets/person.png' %>" height="200px">
   </div>
     <h2><%= person.name + " " + person.prefix + " " + person.surname %></h2>
     <p>Nickname: <%= person.nickname != "" ? person.nickname : 'Ik heb geen...' %></p>
     <div class="button-row">
-    <a class="button" href="<%= person || person.github_handle.includes('https') ? person.github_handle : 'https://github.com/' + person.github_handle %>">
+    <a class="button" href="<%= person.github_handle.includes('https') ? person.github_handle : 'https://github.com/' + person.github_handle %>">
       <i class="fa-brands fa-github"></i> Github</a>
     </div>
 </li>
-</a>
-</div>
+    </a>
+  </div>
 </div>

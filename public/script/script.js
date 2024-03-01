@@ -1,5 +1,4 @@
-console.log("Dit is de client");
-
+// De slider JS
 const slider = document.querySelector(".slider")
 const prevBtn = document.querySelector(".prevBtn");
 const nextBtn = document.querySelector(".nextBtn");
