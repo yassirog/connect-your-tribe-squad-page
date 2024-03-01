@@ -1,27 +1,24 @@
-// De slider JS
-const slider = document.querySelector(".slider")
+const slider = document.querySelector(".slider");
 const prevBtn = document.querySelector(".prevBtn");
 const nextBtn = document.querySelector(".nextBtn");
 
 prevBtn.addEventListener('click', slideLeft);
-
-function slideLeft() {
-    console.log("klikt op previous button (left)")
-
-    slider.scrollBy({
-        left: -300, // scroll distance
-        behavior: 'smooth'
-    });
-}   
-
-
 nextBtn.addEventListener('click', slideRight);
 
-function slideRight() {
-    console.log("klikt op next button (right)")
-
-    slider.scrollBy({
-        left: 300, // scroll distance
+function slideLeft() {
+    const itemWidth = slider.querySelector('.card-item').offsetWidth;
+    const scrollAmount = slider.scrollLeft - itemWidth;
+    slider.scrollTo({
+        left: scrollAmount,
         behavior: 'smooth'
     });
-}  
+}
+
+function slideRight() {
+    const itemWidth = slider.querySelector('.card-item').offsetWidth;
+    const scrollAmount = slider.scrollLeft + itemWidth;
+    slider.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+    });
+}
