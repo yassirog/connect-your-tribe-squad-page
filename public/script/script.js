@@ -9,7 +9,7 @@ function slideLeft() {
     console.log("klikt op previous button (left)")
 
     slider.scrollBy({
-        left: -430, // scroll distance
+        left: -300, // scroll distance
         behavior: 'smooth'
     });
 }   
@@ -21,7 +21,7 @@ function slideRight() {
     console.log("klikt op next button (right)")
 
     slider.scrollBy({
-        left: 430, // scroll distance
+        left: 300, // scroll distance
         behavior: 'smooth'
     });
 }  
